@@ -15,3 +15,5 @@ Crearemos dos variables de tipo entero, que serán los dos valores que el usuari
 - **Leer "a"**
 - **Leer "b"**
 - **Escribir "a+b"**
+
+## Realizado con Visual Studio (MinGW en Windows 10)
