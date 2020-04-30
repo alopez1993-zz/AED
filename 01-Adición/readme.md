@@ -3,7 +3,7 @@
 ### Transcripción del problema
 Crear un programa que muestre en pantalla la suma de dos enteros ingresados por el usuario.
 ### Refinamiento e Hípótesis de trabajo
-Crearemos dos variables de tipo entero, que serán los dos valores que el usuario ingresará por pantalla. Luego crearemos una tercer variable de tipo entero, que será la suma de los valores ingresados, la cual mostraremos por pantalla al finalizar el programa.
+Crearemos dos variables de tipo entero, que serán los dos valores que el usuario ingresará por pantalla. Finalmente mostraremos por pantalla la suma de los valores ingresados al finalizar el programa.
 ### Modelo IPO
 ![Modelo IPO](https://raw.githubusercontent.com/alopez1993/AED/master/01-Adici%C3%B3n/ADICION%20IPO%20-%20diagrams.net.jpg)
 ## Etapa 2: Diseño de la Solución
