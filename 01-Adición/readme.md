@@ -11,7 +11,7 @@ Crearemos dos variables de tipo entero, que serán los dos valores que el usuari
 #### a, b ∈ **Z**
 ### Representación Visual del Algoritmo
 ![Representación Visual](https://raw.githubusercontent.com/alopez1993/AED/master/01-Adici%C3%B3n/Visual%20Adicion.jpg)
-### - Representación Texual
+### Representación Texual
 - **Leer "a"**
 - **Leer "b"**
 - **Escribir "a+b"**
