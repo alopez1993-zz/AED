@@ -14,4 +14,4 @@ a,b ∈ **Z**
 ### Representación Texual
 **- Leer "a"
 - Leer "b"
-**- Escribir "a+b"**
+- Escribir "a+b"**
