@@ -13,5 +13,5 @@
 ## Edad: 27 años
 
 ## Breve descripción: 
-**Estudiante de Ingeniería en Sistemas e Ingeniería Química. Solicité la simultaneidad a fines del año pasado. Me encuentro a 3 materias de obtener el título intermedio de Técnico Química.**
+**Estudiante de Ingeniería en Sistemas e Ingeniería Química. Solicité la simultaneidad a fines del año pasado. Me encuentro a 3 materias de obtener el título intermedio de Técnico Químico.**
 
