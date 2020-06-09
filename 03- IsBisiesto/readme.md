@@ -14,9 +14,6 @@ Utilizaremos la función IsBisiesto, la cual tomará los años como dominio y de
 ![Definición](https://raw.githubusercontent.com/alopez1993/AED/master/03-%20IsBisiesto/DefinicionIsBisiesto.jpg)
 ### Árbol de Expresión
 ![Árbol de Expresión](https://raw.githubusercontent.com/alopez1993/AED/master/03-%20IsBisiesto/arbolexpresioisbisiesto.jpg)
-### Representación Texual
-- **Leer "a"**
-- **Leer "b"**
-- **Escribir "a+b"**
 
-## Realizado con Visual Studio (MinGW en Windows 10)
+
+## Realizado con Visual Studio (MinGW en Windows 10) y Github Desktop
