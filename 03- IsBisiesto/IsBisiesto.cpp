@@ -36,10 +36,11 @@ int main ()
     
     return 0;
 }
-// m: year > 1582; p: year%4 == 0; q: year%100 == 0; r: year%400 == 0;
-bool IsBisiesto (unsigned);
 
-bool IsBisiesto (unsigned year)
+// m: year > 1582; p: year%4 == 0; q: year%100 == 0; r: year%400 == 0;
+bool IsBisiesto (int);
+
+bool IsBisiesto (int year)
     {
         return year > 1582 and (year%4 == 0) and ((year%100 != 0) or year%400 == 0); // m ^ (p ^ (-q v r))
     }
