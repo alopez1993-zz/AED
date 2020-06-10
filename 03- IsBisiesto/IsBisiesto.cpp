@@ -50,7 +50,9 @@ bool IsBisiesto (int year)
     /* La definición de la función lógica podría cambiar siguiendo
        las propiedades de los conectores lógicos de la siguiente manera:
        
-       m ^ (p ^ (-q v r)) = m ^ (p ^ (r v -q)) = (p ^ (r v -q)) ^ m = (p ^ (r v -q)) ^ m 
+       m ^ (p ^ (-q v r)) = m ^ (p ^ (r v -q)) = (p ^ (r v -q)) ^ m = (p ^ (r v -q)) ^ m CONMUTATIVIDAD
+
+       m ^ (p ^ (-q v r)) = (m ^ p) ^ (-q v r)  ASOCIATIVIDAD
     */
 
       
