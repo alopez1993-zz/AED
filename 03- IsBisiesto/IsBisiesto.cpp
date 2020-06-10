@@ -38,6 +38,7 @@ int main ()
 }
 
 // m: year > 1582; p: year%4 == 0; q: year%100 == 0; r: year%400 == 0;
+
 bool IsBisiesto (int);
 
 bool IsBisiesto (int year)
