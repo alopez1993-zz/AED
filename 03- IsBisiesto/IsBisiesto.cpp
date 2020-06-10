@@ -46,3 +46,11 @@ bool IsBisiesto (int year)
     {
         return year > 1582 and (year%4 == 0) and ((year%100 != 0) or year%400 == 0); // m ^ (p ^ (-q v r))
     }
+
+    /* La definición de la función lógica podría cambiar siguiendo
+       las propiedades de los conectores lógicos de la siguiente manera:
+       
+       m ^ (p ^ (-q v r)) = m ^ (p ^ (r v -q)) = (p ^ (r v -q)) ^ m = (p ^ (r v -q)) ^ m 
+    */
+
+      
