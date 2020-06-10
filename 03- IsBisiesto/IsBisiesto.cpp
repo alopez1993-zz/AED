@@ -36,6 +36,7 @@ int main ()
     assert (not IsBisiesto (1900)); // prueba con divisible solo por 100 
     assert (not IsBisiesto (205)); // prueba con menor que 1582
     
+    system("PAUSE()");
     return 0;
 }
 
