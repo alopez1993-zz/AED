@@ -11,10 +11,10 @@ int main ()
     struct poligono { unsigned p; array<punto, 50> puntospol; string colorpol;};
 
     void SetPuntoTri (triangulo&, punto);
-    void SetPuntoPol (poligono&, punto, unsigned);
+    void SetPuntoPol (poligono&, punto, unsigned); //el unsigned será la posición del punto a cambiar
     void AgregarPuntoFinal (poligono&, punto);
-    void CambiarColorPol (poligono&, string);
-    void CambiarColorTri (triangulo&, string);
+    void CambiarColorPol (poligono&, string); //el string será el color nuevo
+    void CambiarColorTri (triangulo&, string); //el string será el color nuevo
     punto QuitarPuntoTri (triangulo&);
     punto QuitarPuntoPol (poligono&);
     // PuntoEliminado = QuitarPuntoPol (pentágono1)
