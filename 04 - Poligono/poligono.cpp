@@ -35,6 +35,15 @@ int main ()
     angulos angulostri (const triangulo&); //esta función convocaría a LongitudLadoTri 3 veces, una por cada lado, y a una función coseno. Teorema del coseno.
     // devuelve los 3 angulos del triangulo
 
+    double PerimetroPol (const poligono&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
+    //devuelve el perímetro del polígono
+    double PerimetroTri (const triangulo&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
+    // devuelve el perímetro del polígono
+
+    double AlturaTriangulo (const triangulo&); //devuelve la altura del triángulo, convocaría a LongitudLadoTri 3 veces para obtener cada lado del triángulo y calcular la altura.
+    double AreaTriangulo (const triangulo&); // devuelve el área del triángulo, convocaría a AlturaTriángulo
+
+
     system("PAUSE()");
     return 0;
 }
