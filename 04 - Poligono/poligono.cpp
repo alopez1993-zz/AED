@@ -15,21 +15,25 @@ int main ()
     
     void AgregarPuntoFinal (poligono&, punto);
     
-    void CambiarColorPol (poligono&, string); //el string será el color nuevo
-    void CambiarColorTri (triangulo&, string); //el string será el color nuevo
+    void SetColorPol (poligono&, string); //el string será el color a  cambiar
+    void SetColorTri (triangulo&, string); //el string será el color a cambiar
     
-    punto QuitarPuntoPol (poligono&);
+    punto QuitarPuntoPol (poligono&, unsigned); //el unsigned será la posición del punto a quitar
     // PuntoEliminado = QuitarPuntoPol (pentágono1)
     
     string GetColorTri (const triangulo&);
+    //devuelve el color del triangulo
     string GetColorPol (const poligono&);
+    //devuelve el color del polígono
     // ColorPoligono = GetColorPol (pentágono1)
     
     string GetPuntoPol (const poligono&, unsigned); //el unsigned será la posición del punto a pedir
     string GetPuntoTri (const triangulo&, unsigned); //el unsigned será la posición del punto a pedir
     
     double LongitudLadoPol (const poligono&, unsigned, unsigned); // los unsigned serán la posición de dos puntos adyacentes
+    //devuelve la longitud de uno de sus lados
     double LongitudLadoTri (const poligono&, unsigned, unsigned); // los unsigned serán la posición de dos puntos adyacentes
+    //devuelve la longitud de uno de sus lados
     
     using angulos = array<unsigned,3>;
     angulos angulostri (const triangulo&); //esta función convocaría a LongitudLadoTri 3 veces, una por cada lado, y a una función coseno. Teorema del coseno.
