@@ -63,10 +63,10 @@ using namespace std;
 
 int main ()
 {
-    assert ( {255,255,0} = sumarcolor ( {255,0,0}, {0,255,0}) );
-    assert ( {255,255,0} = restarcolor (white, blue) );
-    assert ( {127,127,127}= mezcla (blue, yellow) );
-    assert (cyan = complementario (rojo))
+    assert ( {255,255,0} == sumarcolor ( {255,0,0}, {0,255,0}) );
+    assert ( {255,255,0} == restarcolor (white, blue) );
+    assert ( {127,127,127} == mezcla (blue, yellow) );
+    assert (cyan == complementario (red))
 
     system("PAUSE()");
     return 0;
@@ -76,14 +76,14 @@ int main ()
     {
         Color colorsuma;
 
-        color1.R + color2.R > 255? 255 :
-        color1.R + color2.R = colorsuma.R;
+        color1.R + color2.R > 255? colorsuma.R = 255 :
+        colorsuma.R = color1.R + color2.R;
 
-        color1.G + color2.G > 255? 255 :
-        color1.G + color2.G = colorsuma.G;
+        color1.G + color2.G > 255? colorsuma.G = 255:
+        colorsuma.G = color1.G + color2.G;
 
-        color1.B + color2.B > 255? 255 :
-        color1.B + color2.B = colorsuma.B;
+        color1.B + color2.B > 255? colorsuma.B = 255 :
+        colorsuma.B = color1.B + color2.B ;
         
         return colorsuma;
     }
@@ -92,14 +92,14 @@ int main ()
     {
         Color colorresta;
 
-        color1.R - color2.R > 0? 0 :
-        color1.R - color2.R = colorresta.R;
+        color1.R - color2.R < 0?   :
+        colorresta.R = color1.R - color2.R;
 
-        color1.G - color2.G > 0? 0 :
-        color1.G - color2.G = colorresta.G;
+        color1.G - color2.G < 0? colorresta.G = 0 :
+        colorresta.G = color1.G - color2.G;
 
-        color1.B - color2.B > 0? 0 :
-        color1.B - color2.B = colorresta.B;
+        color1.B - color2.B < 0? colorresta.B = 0 :
+        colorresta.B = color1.B - color2.B;
         
         return colorresta;
     }
@@ -108,16 +108,11 @@ int main ()
         
         Color colormezcla;
 
-        (color1.R + color2.R)/2 = colormezcla.R;
-        (color1.G + color2.G)/2 = colormezcla.G;
-        (color1.B + color2.B)/2 = colormezcla.B;
+        colormezcla.R = (color1.R + color2.R)/2;
+        colormezcla.G = (color1.G + color2.G)/2;
+        colormezcla.B = (color1.B + color2.B)/2;
 
         return colormezcla
-
-
-
-
-
     }
 
-
+   
