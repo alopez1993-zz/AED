@@ -28,7 +28,8 @@ using namespace std;
 
 int main ()
 {
-
+    Poligono poligono1 { 5}; {1,2,3;} {1,2,3;} {1,2,3;} {1,2,3;} {1,2,3;} {0,0,0;} {0,0,0;} {0,0,0;} {0,0,0;};} 255,0,0;};
+    
     assert 
     system("PAUSE()");
     return 0;
