@@ -7,19 +7,18 @@
 using namespace std;
 
 //Declaración variable
-struct punto {double x, y;};
+struct Punto {double x, y;};
 
 
 
 //Prototipos operaciones
-float GetDistanciaAlOrigen (punto);
-float GetDistancia (punto, punto);
-bool IsIgual (punto, punto);
+float GetDistanciaAlOrigen (Punto);
+float GetDistancia (Punto, Punto);
+bool IsIgual (Punto, Punto);
 
 int main ()
 {
-    punto puntoA = {0,1};
-    assert ( 1.0 == GetDistanciaAlOrigen (puntoA));
+    assert ( 1.0 == GetDistanciaAlOrigen ({0,1}));
     assert ( 0 == GetDistanciaAlOrigen ({0,0}) );
     assert ( 0 == GetDistancia ({8,4},{8,4}) );
     assert ( true == IsIgual ({8,4},{8,4}) );
@@ -30,7 +29,7 @@ int main ()
 }
 
 //Definiciones de las funciones
-float GetDistanciaAlOrigen (punto punto1)
+float GetDistanciaAlOrigen (Punto punto1)
 {
   float distanciaorigen;
   distanciaorigen = sqrt (pow(punto1.x,2)+pow(punto1.y,2));
@@ -39,7 +38,7 @@ float GetDistanciaAlOrigen (punto punto1)
 
 }
 
-float GetDistancia (punto punto1, punto punto2)
+float GetDistancia (Punto punto1, Punto punto2)
 {
   float distancia;
   distancia = sqrt ((pow(punto2.x,2)-pow(punto1.x,2))+(pow(punto2.y,2)-pow(punto1.y,2)));
@@ -48,7 +47,7 @@ float GetDistancia (punto punto1, punto punto2)
 
 }
 
-bool IsIgual (punto punto1, punto punto2)
+bool IsIgual (Punto punto1, Punto punto2)
 {
     return punto1.x==punto2.x and punto1.y==punto2.y ; //? true : false
 

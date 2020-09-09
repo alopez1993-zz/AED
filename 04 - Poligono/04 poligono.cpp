@@ -10,6 +10,9 @@ using namespace std;
     struct Punto {double x, y;};
     struct Poligono { unsigned p; array<Punto, 9> puntospol; Color colorpol;};
 
+
+
+
     void AddVertice (Poligono&, Punto);
     Punto GetVertice (Poligono&, Punto, unsigned); //el unsigned será la posición del punto a obtener
     void SetVertice (Poligono&, Punto, unsigned); //el unsigned será la posición del punto a cambiar
@@ -18,16 +21,16 @@ using namespace std;
     Color GetColorPol (const Poligono&);   //devuelve el color del polígono
     unsigned GetCantidadLados (const Poligono&); // los unsigned serán la posición de dos puntos adyacent
     //devuelve la longitud de uno de sus lados  
-    float GetDistancia (Punto, Punto);
+    float GetDistancia (Punto, Punto); //Calcula distancia entre puntos
     float PerimetroPol (const Poligono&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
-    //devuelve el perímetro del polígono
-   
-
-    
+    //devuelve el perímetro del polígono 
+  
 
 int main ()
 {
-        system("PAUSE()");
+
+    assert 
+    system("PAUSE()");
     return 0;
 }
 
@@ -80,7 +83,7 @@ int main ()
 
     }
     
-    float PerimetroPol (Poligono poligono)
+    float PerimetroPol (Poligono poligono) //Implementado con la idea de no utilizar bucles (no es la idealidad)
     {
        float lado1 = GetDistancia (poligono.puntospol.at (0), poligono.puntospol.at (1));
        float lado2 = GetDistancia (poligono.puntospol.at (1), poligono.puntospol.at (2));
@@ -92,4 +95,7 @@ int main ()
        float lado8 = GetDistancia (poligono.puntospol.at (7), poligono.puntospol.at (8));
        float lado9 = GetDistancia (poligono.puntospol.at (8), poligono.puntospol.at (9));
        float lado10 = GetDistancia (poligono.puntospol.at (9), poligono.puntospol.at (0));
+
+       float perimetro = lado1+lado2+lado3+lado4+lado5+lado6+lado7+lado8+lado9+lado10; 
+       return perimetro;
     }
