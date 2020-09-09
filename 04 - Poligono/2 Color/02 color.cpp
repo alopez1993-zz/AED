@@ -32,7 +32,6 @@ using namespace std;
 int main ()
 {
     
-    
     assert ( 255 == SumarColor ( white, red ).R);
     assert ( 50 == SumarColor ( {30,0,0} , {20,0,0} ).R);
     assert ( 0 == RestarColor ( black, blue).B);
