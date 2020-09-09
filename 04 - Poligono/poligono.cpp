@@ -2,117 +2,94 @@
 #include <cassert>
 #include <array>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
-    struct Color {int R, G, B;};
-    const Color black = {0,0,0};
-    const Color white = {255,255,255};
-    const Color red = {255,0,0};
-    const Color green = {0,255,0};
-    const Color blue = {0,0,255};
-    const Color yellow = {255,255,0};
-    const Color cyan = {0,255,255};
-    const Color magenta = {255,0,255};
+    struct Color {uint8_t R, G, B;};     
+    struct Punto {double x, y;};
+    struct Poligono { unsigned p; array<Punto, 9> puntospol; Color colorpol;};
 
-    Color sumarcolor (Color, Color);
-    Color restarcolor (Color, Color);
-    Color mezcla (Color color1, Color color2);
-
-    
-    struct punto {double x, y;};
-    struct triangulo {array<punto, 3> puntostri; string colortri;};
-    struct poligono { unsigned p; array<punto, 50> puntospol; string colorpol;};
-
-    void SetPuntoTri (triangulo&, punto, unsigned); //el unsigned será la posición del punto a cambiar
-    void SetPuntoPol (poligono&, punto, unsigned); //el unsigned será la posición del punto a cambiar
-    
-    void AgregarPuntoFinal (poligono&, punto);
-    
-    void SetColorPol (poligono&, string); //el string será el color a  cambiar
-    void SetColorTri (triangulo&, string); //el string será el color a cambiar
-    
-    punto QuitarPuntoPol (poligono&, unsigned); //el unsigned será la posición del punto a quitar
-    // PuntoEliminado = QuitarPuntoPol (pentágono1)
-    
-    string GetColorTri (const triangulo&);
-    //devuelve el color del triangulo
-    string GetColorPol (const poligono&);
-    //devuelve el color del polígono
-    // ColorPoligono = GetColorPol (pentágono1)
-    
-    string GetPuntoPol (const poligono&, unsigned); //el unsigned será la posición del punto a pedir
-    string GetPuntoTri (const triangulo&, unsigned); //el unsigned será la posición del punto a pedir
-    
-    double LongitudLadoPol (const poligono&, unsigned, unsigned); // los unsigned serán la posición de dos puntos adyacentes
-    //devuelve la longitud de uno de sus lados
-    double LongitudLadoTri (const poligono&, unsigned, unsigned); // los unsigned serán la posición de dos puntos adyacentes
-    //devuelve la longitud de uno de sus lados
-    
-    using angulos = array<unsigned,3>;
-    angulos angulostri (const triangulo&); //esta función convocaría a LongitudLadoTri 3 veces, una por cada lado, y a una función coseno. Teorema del coseno.
-    // devuelve los 3 angulos del triangulo
-
-    double PerimetroPol (const poligono&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
+    void AddVertice (Poligono&, Punto);
+    Punto GetVertice (Poligono&, Punto, unsigned); //el unsigned será la posición del punto a obtener
+    void SetVertice (Poligono&, Punto, unsigned); //el unsigned será la posición del punto a cambiar
+    void SetColorPol (Poligono&, Color); //el string será el color a  cambiar
+    void RemoveVertice (Poligono&, unsigned);    
+    Color GetColorPol (const Poligono&);   //devuelve el color del polígono
+    unsigned GetCantidadLados (const Poligono&); // los unsigned serán la posición de dos puntos adyacent
+    //devuelve la longitud de uno de sus lados  
+    float GetDistancia (Punto, Punto);
+    float PerimetroPol (const Poligono&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
     //devuelve el perímetro del polígono
-    double PerimetroTri (const triangulo&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
-    // devuelve el perímetro del polígono
+   
 
-    double AlturaTriangulo (const triangulo&); //devuelve la altura del triángulo, convocaría a LongitudLadoTri 3 veces para obtener cada lado del triángulo y calcular la altura.
-    double AreaTriangulo (const triangulo&); // devuelve el área del triángulo, convocaría a AlturaTriángulo
+    
 
 int main ()
 {
-    assert ( {255,255,0} == sumarcolor ( {255,0,0}, {0,255,0}) );
-    assert ( {255,255,0} == restarcolor (white, blue) );
-    assert ( {127,127,127} == mezcla (blue, yellow) );
-    assert (cyan == complementario (red))
-
-    system("PAUSE()");
+        system("PAUSE()");
     return 0;
 }
 
-    Color sumarcolor (Color color1, Color color2) 
+   void AddVertice (Poligono poligono, Punto punto)
+   {
+       poligono.p = poligono.p+1;
+       int posicion = poligono.p;
+       poligono.puntospol.at (posicion)  = punto;
+
+   }
+
+    Punto GetVertice (Poligono poligono, Punto punto, unsigned posicion)
     {
-        Color colorsuma;
+        return poligono.puntospol.at (posicion);
 
-        color1.R + color2.R > 255? colorsuma.R = 255 :
-        colorsuma.R = color1.R + color2.R;
-
-        color1.G + color2.G > 255? colorsuma.G = 255:
-        colorsuma.G = color1.G + color2.G;
-
-        color1.B + color2.B > 255? colorsuma.B = 255 :
-        colorsuma.B = color1.B + color2.B ;
-        
-        return colorsuma;
+    }
+   
+    void SetVertice (Poligono poligono, Punto punto, unsigned posicion)
+    {
+        poligono.puntospol.at (posicion) = punto;
     }
 
-    Color restarcolor (Color color1, Color color2) 
+    void SetColorPol (Poligono poligono, Color color)
     {
-        Color colorresta;
+        poligono.colorpol = color;
 
-        color1.R - color2.R < 0?   :
-        colorresta.R = color1.R - color2.R;
+    }
 
-        color1.G - color2.G < 0? colorresta.G = 0 :
-        colorresta.G = color1.G - color2.G;
+    void RemoveVertice (Poligono poligono)
+    {
+        poligono.p = poligono.p - 1;
+    }
 
-        color1.B - color2.B < 0? colorresta.B = 0 :
-        colorresta.B = color1.B - color2.B;
-        
-        return colorresta;
+    Color GetColorPol (Poligono poligono)
+    {
+        return poligono.colorpol;
+    }
+
+    unsigned GetCantidadLados (Poligono poligono)
+    {
+        return poligono.p;
+    }
+
+    float GetDistancia (Punto punto1, Punto punto2)
+    {
+        float distancia;
+        distancia = sqrt ((pow(punto2.x,2)-pow(punto1.x,2))+(pow(punto2.y,2)-pow(punto1.y,2)));
+  
+        return distancia;
+
     }
     
-    Color mezcla (Color color1, Color color2){
-        
-        Color colormezcla;
-
-        colormezcla.R = (color1.R + color2.R)/2;
-        colormezcla.G = (color1.G + color2.G)/2;
-        colormezcla.B = (color1.B + color2.B)/2;
-
-        return colormezcla
+    float PerimetroPol (Poligono poligono)
+    {
+       float lado1 = GetDistancia (poligono.puntospol.at (0), poligono.puntospol.at (1));
+       float lado2 = GetDistancia (poligono.puntospol.at (1), poligono.puntospol.at (2));
+       float lado3 = GetDistancia (poligono.puntospol.at (2), poligono.puntospol.at (3));
+       float lado4 = GetDistancia (poligono.puntospol.at (3), poligono.puntospol.at (4));
+       float lado5 = GetDistancia (poligono.puntospol.at (4), poligono.puntospol.at (5));
+       float lado6 = GetDistancia (poligono.puntospol.at (5), poligono.puntospol.at (6));
+       float lado7 = GetDistancia (poligono.puntospol.at (6), poligono.puntospol.at (7));
+       float lado8 = GetDistancia (poligono.puntospol.at (7), poligono.puntospol.at (8));
+       float lado9 = GetDistancia (poligono.puntospol.at (8), poligono.puntospol.at (9));
+       float lado10 = GetDistancia (poligono.puntospol.at (9), poligono.puntospol.at (0));
     }
-
-   
