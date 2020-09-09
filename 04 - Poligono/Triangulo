@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cassert>
+#include <array>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+struct triangulo {array<Punto, 3> puntostri; string colortri;};
+void SetPuntoTri (triangulo&, Punto, unsigned); //el unsigned será la posición del punto a cambiar
+void SetColorTri (triangulo&, string); //el string será el color a cambiar
+string GetColorTri (const triangulo&); //devuelve el color del triangulo
+string GetPuntoTri (const triangulo&, unsigned); //el unsigned será la posición del punto a pedir
+double LongitudLadoTri (const Poligono&, unsigned, unsigned); // los unsigned serán la posición de dos puntos adyacentes
+
+using angulos = array<unsigned,3>;
+    angulos angulostri (const triangulo&); //esta función convocaría a LongitudLadoTri 3 veces, una por cada lado, y a una función coseno. Teorema del coseno.
+    // devuelve los 3 angulos del triangulo 
+
+     double PerimetroTri (const triangulo&); //esta función convocaría a LongitudLadoPol para poder sumar la magnitud de los lados
+    // devuelve el perímetro del polígono
+
+double AlturaTriangulo (const triangulo&); //devuelve la altura del triángulo, convocaría a LongitudLadoTri 3 veces para obtener cada lado del triángulo y calcular la altura.
+double AreaTriangulo (const triangulo&); // devuelve el área del triángulo, convocaría a AlturaTriángulo
