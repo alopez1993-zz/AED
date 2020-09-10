@@ -83,7 +83,8 @@ int main ()
 
     void RemoveVertice (Poligono& poligono)
     {
-        poligono.p--;
+        poligono.p --;
+        poligono.puntospol[poligono.p];
     }
 
     Color GetColorPol (const Poligono& poligono)
