@@ -49,7 +49,7 @@ int main ()
     assert (-2 == (GetVertice (pol, 1)).y );
     assert (25 == (GetColorPol (pol)).B );
     assert (4 == GetCantidadLados (pol));
-    assert (2 == pol.p); //assert del RemoveVertice
+    assert (3 == pol.p); 
     assert (29 == PerimetroPol (pol) );
 
     system("PAUSE()");
