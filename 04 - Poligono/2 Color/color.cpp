@@ -1,7 +1,7 @@
 /*
 Axel Javier Lopez
 09092020
-Tipo de Dato: Poligono
+Tipo de Dato: Color
 */
 
 #include <iostream>

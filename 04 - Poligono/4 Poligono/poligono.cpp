@@ -1,4 +1,8 @@
-
+/*
+Axel Javier Lopez
+09092020
+Tipo de Dato: Color
+*/
 
 #include <iostream>
 #include <cassert>

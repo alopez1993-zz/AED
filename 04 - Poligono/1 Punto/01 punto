@@ -1,3 +1,9 @@
+/*
+Axel Javier Lopez
+09092020
+Tipo de Dato: Punto
+*/
+
 #include <iostream>
 #include <cassert>
 #include <array>
