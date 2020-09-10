@@ -1,3 +1,9 @@
+/*
+Axel Javier Lopez
+09092020
+Tipo de Dato: Poligono
+*/
+
 #include <iostream>
 #include <cassert>
 #include <array>
@@ -13,7 +19,7 @@ using namespace std;
     const Color green = {0,255,0};
     const Color blue = {0,0,255};
        
-    using Proporcion = array <double,3>;
+    //using Proporcion = array <double,3>;
     
     //Prototipos de las operaciones
     Color SumarColor (Color, Color);
@@ -22,7 +28,8 @@ using namespace std;
     Color GetComplementario (Color);
     //Proporcion ProporcionMezcla (Color, Color);
     //CrearSvgConTextoEscritoEnAltoContraste (string nombrearchivo, string mensaje, Color colormensaje; )
-    
+    bool IsIgual (Color, Color);
+
     Color yellow = SumarColor (red, green); //const Color yellow = {255,255,0};
     Color cyan = SumarColor (blue, green); //const Color cyan = {0,255,255};
     Color magenta = SumarColor (red, green);  //const Color magenta = {255,0,255};
@@ -42,6 +49,7 @@ int main ()
     assert ( 130 == GetComplementario ({125,6,26}).R);
     assert ( 249 == GetComplementario ({125,6,26}).G);
     assert ( 229 == GetComplementario ({125,6,26}).B);
+    assert ( IsIgual ({125,6,26}, {125,6,26}));
 
     system("PAUSE()");
     return 0;
@@ -102,6 +110,11 @@ int main ()
         return colorcomplementario;
     }
     
+    bool IsIgual (Color color1, Color color2)
+    {
+        return color1.R == color2.R and color1.G == color2.G and color1.B == color2.B;
+        
+    }
     /*CrearSvgConTextoEscritoEnAltoContraste (string nombrearchivo, string mensaje, Color colormensaje)
     {
         ofstream archivo;
