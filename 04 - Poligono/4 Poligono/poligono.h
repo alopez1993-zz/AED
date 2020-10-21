@@ -12,7 +12,7 @@ using namespace std;
 
     struct Color {uint8_t R, G, B;};     
     struct Punto {double x, y;};
-    const unsigned n = 9;
+    const unsigned n = 50;
     struct Poligono { unsigned p; array<Punto, n> puntospol; Color colorpol;}; //p marca la cantidad de puntos que tiene el polígono
     //n marca la cantidad máxima posible de puntos
     void AddVertice (Poligono&, Punto); //Agrega un punto al final del array de puntos

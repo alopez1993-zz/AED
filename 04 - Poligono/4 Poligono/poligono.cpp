@@ -12,6 +12,7 @@ Tipo de Dato: Poligono
    {
        if (pol.p < n) // si esto no se cumple, no puedo agregar otro punto
        {
+           pol.p = pol.p++;
            pol.puntospol.at(pol.p++) = punto;
        }
    }
