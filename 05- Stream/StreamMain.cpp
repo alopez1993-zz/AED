@@ -5,8 +5,7 @@ int main ()
 {
     // Creo el archivo fuente y el archivo de salida
 
-    ifstream poligonosin;
-    poligonosin.open ("poligonos.txt", ios::in);
+    ifstream poligonosin ("poligonos.txt");
     ofstream poligonosout;
     poligonosout.open ("poligonosout.txt",ios::out); //si el archivo no existe lo crea y si no existe lo reemplaza.
  
