@@ -30,7 +30,7 @@ int main ()
     pol.p = 0; // seteo en 0 la primer posicion para agregar
 
    
-    while (ExtraerPoligono (pol, poligonosin)) //mientras se haya exraído un polígono, mandar al archivo de salida
+    while   (ExtraerPoligono (pol, poligonosin)) //mientras se haya exraído un polígono, mandar al archivo de salida
     { 
         EnviarPoligono (pol, poligonosout);
     } 
