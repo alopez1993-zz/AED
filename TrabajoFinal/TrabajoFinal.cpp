@@ -210,16 +210,14 @@ void FiltrarPoligonos (ListaPol& listapol, const int& cond){
 
 auto auxPol = new NodePol;
 auto auxAntPol = new NodePol;
-auto auxLibera = new NodePol;
 
 auxPol = listapol.firstPol; //auxPol apunta al primer nodo (Polígono)
 
 while (not CumpleCondicionPerimetro(auxPol->poligono, cond)) //Nodos (Polígonos) consecutivos no cumplen
 {
-    auxLibera = listapol.firstPol; //auxAntPol apunta al primer nodo (Polígono) que no cumple la condición
     listapol.firstPol = auxPol->nextNodePol; //Lista saltea un Nodo (Polígono)
     auxPol = auxPol->nextNodePol; //auxPol saltea un Nodo (Polígono)
-    delete auxLibera; //Libera reserva de memoria del primer nodo (Poligono)
+    //LiberarPoligono (NodePol*& nodePol);
 }
  
 auxPol = auxPol->nextNodePol; //auxPol apunta al segundo nodo (Poligono)
@@ -228,7 +226,7 @@ auxAntPol = listapol.firstPol; //auxAntPol apunta al primer nodo (Poligono)
 while (auxPol != nullptr)
     {
         if (not CumpleCondicionPerimetro(auxPol->poligono, cond)) {
-            auxLibera = auxPol;
+            //LiberarPoligono (NodePol*& nodePol);
             auxAntPol->nextNodePol = auxPol->nextNodePol; //Primero nodo "se saltea" el siguiente
         }
         else auxAntPol = auxAntPol->nextNodePol;//auxAntPol apunta al siguiente nodo (Poligono)
@@ -263,6 +261,7 @@ void EnviarPoligono (Poligono& pol, ofstream& out){
     EnviarColor (pol.c, out);
     EnviarPuntos (pol.FirstNode, out);
     EnviarPerimetro (pol, out);
+    //LiberarPoligono (NodePol*& nodePol);
 }
 
 void EnviarColor (Color& color, ofstream& out){
