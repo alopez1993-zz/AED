@@ -218,6 +218,7 @@ while (auxPol != nullptr)
         if (not CumpleCondicionPerimetro(auxPol->poligono, cond)) {
             auxAntPol->nextNodePol = auxPol->nextNodePol; //Primero nodo "se saltea" el siguiente
         }
+        else auxAntPol = auxAntPol->nextNodePol;//auxAntPol apunta al siguiente nodo (Poligono)
         
         auxPol = auxPol->nextNodePol; //auxPol apunta al segundo nodo (Poligono)
     }
