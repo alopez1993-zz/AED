@@ -6,7 +6,7 @@ Tipo de Dato: Poligono
 
 // Tipo Color: Implementación, Parte Privada
 
-#include "poligono.h"
+#include "poligonoarray.h"
 
    void AddVertice (Poligono& pol, Punto punto)
    {

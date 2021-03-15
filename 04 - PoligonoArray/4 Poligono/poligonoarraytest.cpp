@@ -1,5 +1,5 @@
 // Tests Poligono
-#include "poligono.h"
+#include "poligonoarray.h"
 #include <cassert>
 
 int main ()

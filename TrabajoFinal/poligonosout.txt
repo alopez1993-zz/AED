@@ -1,0 +1,10 @@
+Poligono:
+Color:(64,66,67)
+Puntos:(100,0) (55,0) (1,60) (1,2) 
+Perimetro:(99.0202)
+
+Poligono:
+Color:(54,20,0)
+Puntos:(3,5) (9,241) (0,3) (55,0) 
+Perimetro:(52.2398)
+

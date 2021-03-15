@@ -24,17 +24,28 @@ bool IsIgual (Punto, Punto);
 
 int main ()
 {
-    assert ( 1.0 == GetDistanciaAlOrigen ({0,1}));
+  Punto punto1;
+  punto1.x=5;
+  punto1.y=10;
+
+  Punto punto2;
+  punto2.x=10;
+  punto2.y=20;
+
+    float distancia = GetDistancia (punto1, punto2);
+    cout << distancia << '\n';
+    /*assert ( 1.0 == GetDistanciaAlOrigen ({0,1}));
     assert ( 0 == GetDistanciaAlOrigen ({0,0}) );
     assert ( 0 == GetDistancia ({8,4},{8,4}) );
     assert ( true == IsIgual ({8,4},{8,4}) );
-    assert ( false == IsIgual ({8,4},{8,0}) );
+    assert ( false == IsIgual ({8,4},{8,0}) );*/
 
     system("PAUSE()");
     return 0;
 }
 
 //Definiciones de las funciones
+
 float GetDistanciaAlOrigen (Punto punto1)
 {
   float distanciaorigen;
@@ -44,11 +55,10 @@ float GetDistanciaAlOrigen (Punto punto1)
 
 }
 
-float GetDistancia (Punto punto1, Punto punto2)
+float GetDistancia (Punto p1, Punto p2)
 {
   float distancia;
-  distancia = sqrt ((pow(punto2.x,2)-pow(punto1.x,2))+(pow(punto2.y,2)-pow(punto1.y,2)));
-  
+  distancia = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
   return distancia;
 
 }
