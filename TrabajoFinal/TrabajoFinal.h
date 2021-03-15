@@ -82,7 +82,6 @@ void EnviarPerimetro (const Poligono& pol, ofstream& out);
 //Filtros
 void FiltrarPoligonos (ListaPol& listapol, const int& cond);
 bool CumpleCondicionPerimetro (const Poligono& pol, const int& cond);
-void DesenlazarNodoPol(ListaPol& listapol, NodePol* nodePol);
 
 //Heap
 void LiberarPoligono (NodePol*& nodePol);
