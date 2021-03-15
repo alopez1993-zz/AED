@@ -12,16 +12,19 @@ using namespace std;
     struct Punto {double x, y;};
     struct Poligono { unsigned p; array<Punto, 50> puntospol; Color colorpol;}; //p marca la cantidad de puntos que tiene el polígono
     //n marca la cantidad máxima posible de puntos
-    bool ExtraerPoligono (Poligono&, ifstream&);
-    bool ExtraerPuntos (Poligono&, ifstream&);
-    bool ExtraerColor (Poligono&, ifstream&);
-    void AddVertice (Poligono&, Punto); // Nueva version. La de la tarea de Poligonos anterior no servia, ya que solo agregaba al final.   
-    bool EnviarPoligono (Poligono&, ofstream&);
-    bool EnviarColor (Poligono&, ofstream&);
-    bool EnviarPuntos (Poligono&, ofstream&); 
-    double PerimetroPol (const Poligono& poligono);
-    double GetDistancia (Punto punto1, Punto punto2);
-    bool FiltroPerimetro (const Poligono& pol); 
+    bool ParsearPoligono (ifstream& in, Poligono& pol);
+    bool ParsearPuntos (ifstream& in, Poligono& pol);
+    bool ParsearPunto (ifstream& in, Punto& punto);
+    bool ParsearColor (ifstream& in, Poligono& pol);
+    bool ParsearPuntoComa (ifstream& in);
+    void AddVertice (Poligono& pol, Punto punto); 
+    void EnviarPoligono (Poligono& pol, ofstream& out);
+    void EnviarPerimetro (Poligono& pol, ofstream& out);
+    void EnviarColor (Poligono&, ofstream&);
+    void EnviarPuntos (Poligono&, ofstream&); 
+    float GetPerimetro (const Poligono& poligono);
+    float GetDistancia (const Punto& punto1, const Punto& punto2);
+    bool FiltroPerimetro (const Poligono& pol, const unsigned& cond); 
     void MostrarPoligono (const Poligono& pol);
     void MostrarColor (const Poligono& pol);  
     void MostrarPuntos (const Poligono& pol);

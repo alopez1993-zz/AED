@@ -1,8 +1,8 @@
-Stream: Stream.o StreamMain.o
-	g++ Stream.o StreamMain.o -o Stream 
+StreamArray: StreamArray.o StreamArrayTest.o
+	g++ StreamArray.o StreamArrayTest.o -o StreamArray 
 
-Stream.o: Stream.cpp
-	g++ -c Stream.cpp
+StreamArray.o: StreamArray.cpp
+	g++ -c StreamArray.cpp
 
-StreamMain.o: StreamMain.cpp
-	g++ -c StreamMain.cpp
+StreamArrayTest.o: StreamArrayTest.cpp
+	g++ -c StreamArrayTest.cpp

@@ -48,6 +48,11 @@ struct ListaPol{
 
 void AddFirstVertice (Poligono& pol, const Punto& punto);
 void AddFinalVertice (Poligono& pol, const Punto& punto);
+unsigned GetCantidadLados (const Poligono& pol);
+void RemoveFirstVertice (Poligono& pol);
+void RemoveLastVertice (Poligono& pol);
+Punto GetVertice (const Poligono& pol, const unsigned& posicion);
+void SetVertice (Poligono & pol, const Punto& p, const unsigned& posicion);
 void MostrarPoligono (const Poligono& pol);
 void MostrarPunto (const Node* nodo);
 void MostrarColor (const Poligono& pol);

@@ -44,6 +44,50 @@ void AddFinalVertice (Poligono& pol, const Punto& punto){
     else pol.FirstNode = n;
 }
 
+unsigned GetCantidadLados (const Poligono& pol){ //Recorre los nodos (Punto) con un contador hasta encontrar el que apunta a null
+    unsigned cantlados = 0;
+    auto aux = pol.FirstNode;
+
+    while (aux != nullptr) {
+        ++cantlados;
+        aux = aux->next;} 
+
+    return cantlados;
+
+}
+
+void RemoveFirstVertice (Poligono& pol){
+    auto auxPol = new Node;
+    auxPol = pol.FirstNode; //auxPol apunta al primer nodo (Punto)
+    pol.FirstNode = pol.FirstNode->next; //Lista saltea un Nodo (Punto)
+    delete auxPol;
+}
+
+void RemoveLastVertice (Poligono& pol){
+    Node* aux = pol.FirstNode;
+    unsigned c = GetCantidadLados(pol);
+    for (unsigned i = 0; i < c - 2 ; ++i) aux = aux->next; //Recorre la lista hasta que obtiene en aux la posición del anteultimo nodo
+    auto aux2 = aux->next;
+    delete aux2; //Libero de memoria el último nodo
+    aux->next = nullptr; //El último nodo (Punto) apunta a null en vez de apuntar al nodo eliminado
+}
+
+Punto GetVertice (const Poligono& pol, const unsigned& posicion){
+    Node* aux;
+    aux = pol.FirstNode;
+    for(int i = 0; i < posicion ; ++i) aux = aux->next; //Recorre los nodos hasta la posición deseada
+    return aux->p;
+}
+
+void SetVertice (Poligono & pol, const unsigned& posicion, const Punto& p){
+    
+    auto aux = pol.FirstNode;
+    for(int i = 0; i < posicion ; ++i) aux = aux->next; //Recorre los nodos hasta la posición deseada
+    
+    aux->p.x = p.x;
+    aux->p.y = p.y;
+}
+
 void MostrarPoligono (const Poligono& pol){
 
    MostrarColor (pol);  
@@ -137,3 +181,6 @@ float GetDistancia (const Punto& p1, const Punto& p2)
   return distancia;
 
 }
+
+
+
