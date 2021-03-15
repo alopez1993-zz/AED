@@ -42,6 +42,7 @@ void AddFinalVertice (Poligono& pol, const Punto& punto){
 
 void MostrarPoligono (const Poligono& pol){
 
+   cout << "Poligono:";
    MostrarColor (pol);  
    MostrarPuntos (pol);
    MostrarPerimetro (pol);
@@ -105,7 +106,7 @@ float GetDistancia (const Punto& p1, const Punto& p2)
 void MostrarPerimetro (const Poligono& pol){
     float Perimetro;
     Perimetro = GetPerimetro (pol);
-    cout << "Perimetro:" << '(' << Perimetro << ')' << "\n\n";
+    cout << "Perimetro:" << Perimetro << "\n\n";
 }
 
 bool ParsearPoligonos (ifstream& in, ListaPol& listapol){
@@ -124,6 +125,7 @@ bool ParsearPoligono (ifstream& in, Poligono& pol)
 {
     if (not ParsearColor (in, pol)) return false;
     if (not ParsearPuntos (in, pol)) return false;
+    if (not ParsearPuntoComa (in)) return false;
     return bool {in};
 }
 
@@ -150,17 +152,27 @@ bool ParsearColor (ifstream& in, Poligono& pol)
 
 bool ParsearPuntos (ifstream& in, Poligono& pol)
 {
-    while ( in.get() != ';') // así lee de caracter en caracter y puede identificar el ";"
+    for (Punto punto; ParsearPunto (in, punto);)
     {
-        char coma;
-        Punto punto;
-        in >> punto.x;
-        in >> coma; 
-        in >> punto.y;
         AddFinalVertice (pol, punto);
     }
+    return ParsearPunto;
+}
+
+bool ParsearPunto (ifstream& in, Punto& punto){
+    char coma;
+    in >> punto.x;
+    in >> coma;
+    in >> punto.y;
     
-    return bool {in};
+    return coma == ',' and bool {in};
+}
+    
+bool ParsearPuntoComa (ifstream& in){
+    in.clear (); //Libero flujo de entrada
+    char c; //
+    in >> c;
+    return c == ';' and bool {in};
 }
 
 void AddPoligono (const Poligono& pol, ListaPol& listapol){
@@ -198,16 +210,16 @@ void FiltrarPoligonos (ListaPol& listapol, const int& cond){
 
 auto auxPol = new NodePol;
 auto auxAntPol = new NodePol;
-//auto auxLibera = new NodePol;
+auto auxLibera = new NodePol;
 
 auxPol = listapol.firstPol; //auxPol apunta al primer nodo (Polígono)
 
 while (not CumpleCondicionPerimetro(auxPol->poligono, cond)) //Nodos (Polígonos) consecutivos no cumplen
 {
-    //auxLibera = listapol.firstPol; //auxAntPol apunta al primer nodo (Polígono) que no cumple la condición
+    auxLibera = listapol.firstPol; //auxAntPol apunta al primer nodo (Polígono) que no cumple la condición
     listapol.firstPol = auxPol->nextNodePol; //Lista saltea un Nodo (Polígono)
     auxPol = auxPol->nextNodePol; //auxPol saltea un Nodo (Polígono)
-    //LiberarPoligono (auxLibera); //Libera reserva de memoria del primer nodo (Poligono)
+    delete auxLibera; //Libera reserva de memoria del primer nodo (Poligono)
 }
  
 auxPol = auxPol->nextNodePol; //auxPol apunta al segundo nodo (Poligono)
@@ -216,6 +228,7 @@ auxAntPol = listapol.firstPol; //auxAntPol apunta al primer nodo (Poligono)
 while (auxPol != nullptr)
     {
         if (not CumpleCondicionPerimetro(auxPol->poligono, cond)) {
+            auxLibera = auxPol;
             auxAntPol->nextNodePol = auxPol->nextNodePol; //Primero nodo "se saltea" el siguiente
         }
         else auxAntPol = auxAntPol->nextNodePol;//auxAntPol apunta al siguiente nodo (Poligono)
@@ -272,7 +285,7 @@ void EnviarPuntos (Node* nodo, ofstream& out){
 void EnviarPerimetro (const Poligono& pol, ofstream& out){
     float Perimetro;
     Perimetro = GetPerimetro (pol);
-    out << "Perimetro:" << '(' << Perimetro << ')' << "\n\n";
+    out << "Perimetro:" << Perimetro << "\n\n";
 }
 
 void FlujoPoligonos (){

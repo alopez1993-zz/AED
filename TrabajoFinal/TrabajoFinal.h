@@ -57,6 +57,8 @@ bool ParsearPoligonos (ifstream& in, ListaPol& listapol);
 bool ParsearPoligono (ifstream& in, Poligono& pol);
 bool ParsearColor (ifstream& in, Poligono& pol);
 bool ParsearPuntos (ifstream& in, Poligono& pol);
+bool ParsearPunto (ifstream& in, Punto& punto);
+bool ParsearPuntoComa (ifstream& in);
 void AddPoligono (const Poligono& pol, ListaPol& listapol);
 void MostrarListaPol (const ListaPol& listapol);
 float GetPerimetro (const Poligono& pol);

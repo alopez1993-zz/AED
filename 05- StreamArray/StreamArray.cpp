@@ -10,7 +10,7 @@ bool ParsearPoligono (ifstream& in, Poligono& pol)
 {
     if (not ParsearColor (in, pol)) return false;
     if (not ParsearPuntos (in, pol)) return false;
-    ParsearPuntoComa (in);
+    if (not ParsearPuntoComa (in)) return false;
     return bool {in};
 }
 
@@ -31,7 +31,6 @@ bool ParsearColor (ifstream& in, Poligono& pol)
     in >> entero;
     pol.colorpol.B = entero;
     
-    MostrarColor (pol);
     return bool {in};
 
 }
@@ -43,8 +42,7 @@ bool ParsearPuntos (ifstream& in, Poligono& pol)
     {
         AddVertice (pol, punto);
     }
-    MostrarPuntos (pol);
-    return bool {in};
+    return ParsearPunto;
 }
 
 bool ParsearPunto (ifstream& in, Punto& punto){
@@ -56,21 +54,21 @@ bool ParsearPunto (ifstream& in, Punto& punto){
     return coma == ',' and bool {in};
 }
     
-
 bool ParsearPuntoComa (ifstream& in){
-    in.clear();//Libero flujo de entrada
-    char comp;
-    in >> comp;
-    return comp == ';';
+    in.clear (); //Libero flujo de entrada
+    char c; //
+    in >> c;
+    return c == ';' and bool {in};
 }
 
 // Funciones de envío
 
 void EnviarPoligono (Poligono& pol, ofstream& out)
 {
+    out << "Polígono:\n";
     EnviarColor (pol, out);
     EnviarPuntos (pol, out);
-    EnviarPoligono (pol, out);
+    EnviarPerimetro (pol, out);
 }
 
 void EnviarColor (Poligono& pol, ofstream& out)
@@ -81,10 +79,12 @@ void EnviarColor (Poligono& pol, ofstream& out)
 void EnviarPuntos (Poligono& pol, ofstream& out)
 
 {
+    out << "Puntos:";
     for (int i = 0; i < pol.p; i++) // así lee de caracter en caracter y puede identificar el ";"
     {
-        out << "Puntos:" <<'('<< pol.puntospol.at(i).x <<','<< pol.puntospol.at(i).y<< ")\n";
+        out <<'('<< pol.puntospol.at(i).x <<','<< pol.puntospol.at(i).y<< ") ";
     }
+    out << '\n';
 }
 
 void EnviarPerimetro (Poligono& pol, ofstream& out){
@@ -117,14 +117,10 @@ float GetDistancia (const Punto& p1, const Punto& p2)
 
 }
 
-bool FiltroPerimetro (const Poligono& pol, const unsigned& cond)
+void FiltroPerimetro (Poligono& pol, const unsigned& cond, ofstream& out)
 {
-    bool cumple = true;
-    if (not GetPerimetro (pol) > cond)
-    {
-        cumple = false;
-    }
-    return cumple;
+    if (GetPerimetro (pol) > cond) EnviarPoligono (pol, out);
+    
 }
 
 void MostrarPoligono (const Poligono& pol)

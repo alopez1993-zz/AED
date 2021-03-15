@@ -24,7 +24,7 @@ using namespace std;
     void EnviarPuntos (Poligono&, ofstream&); 
     float GetPerimetro (const Poligono& poligono);
     float GetDistancia (const Punto& punto1, const Punto& punto2);
-    bool FiltroPerimetro (const Poligono& pol, const unsigned& cond); 
+    void FiltroPerimetro (Poligono& pol, const unsigned& cond, ofstream& out);
     void MostrarPoligono (const Poligono& pol);
     void MostrarColor (const Poligono& pol);  
     void MostrarPuntos (const Poligono& pol);

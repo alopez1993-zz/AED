@@ -16,13 +16,9 @@ int main ()
     for (Poligono pol; ParsearPoligono (poligonosin, pol);) //mientras se haya exraído un polígono, mandar al archivo de salida
     {
         MostrarPoligono (pol);
-        EnviarPoligono (pol, poligonosout);
+        unsigned cond = 60; //Cota inferior de perímetro
+        FiltroPerimetro (pol, cond, poligonosout);
     }
-            //unsigned cond = 60;
-            //if (FiltroPerimetro(pol, cond));
-            //{
-                //EnviarPoligono (pol, poligonosout);
-            //} 
     
     system("PAUSE()");
 }
